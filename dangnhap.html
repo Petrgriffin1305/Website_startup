@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng nhập</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="container">
+        <h2>Đăng nhập</h2>
+
+        <div class="input-box">
+            <i class='bx bx-user'></i>
+            <input type="text" id="loginUser" placeholder="Tên người dùng">
+        </div>
+
+        <div class="input-box">
+            <i class='bx bx-lock'></i>
+
+            <span class="eye" onclick="togglePassword('loginPass', this)"> <!--Hide/ show password-->
+               <i class='bx bx-hide'></i>
+            </span>
+
+            <input type="password" id="loginPass" placeholder="Mật khẩu">
+        </div>
+
+        <div class="remember">
+            <input type="checkbox" id="rememberMe"> Nhớ mật khẩu
+        </div>
+
+        <button onclick="login()">Đăng nhập</button>
+
+        <button class="forgot-btn">Quên mật khẩu?</button>
+
+        <h4>Chưa có tài khoản?</h4>
+        <button onclick="goToSignup()">Đăng kí</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
