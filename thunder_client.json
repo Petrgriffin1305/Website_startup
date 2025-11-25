@@ -1,0 +1,122 @@
+{
+  "client": "Thunder Client",
+  "collectionName": "Food Rescue API",
+  "dateExported": "2025-02-15T00:00:00.000Z",
+  "requests": [
+    {
+      "name": "Register Seller",
+      "method": "POST",
+      "url": "http://localhost:3000/api/auth/register",
+      "body": {
+        "type": "json",
+        "raw": "{\"email\":\"seller1@gmail.com\", \"password\":\"123456\", \"role\":\"seller\", \"name\":\"Cửa hàng A\"}"
+      }
+    },
+    {
+      "name": "Register Buyer",
+      "method": "POST",
+      "url": "http://localhost:3000/api/auth/register",
+      "body": {
+        "type": "json",
+        "raw": "{\"email\":\"buyer1@gmail.com\", \"password\":\"123456\", \"role\":\"buyer\", \"name\":\"Người Mua\"}"
+      }
+    },
+    {
+      "name": "Login Seller",
+      "method": "POST",
+      "url": "http://localhost:3000/api/auth/login",
+      "body": {
+        "type": "json",
+        "raw": "{\"email\": \"seller1@gmail.com\", \"password\": \"123456\"}"
+      }
+    },
+    {
+      "name": "Login Buyer",
+      "method": "POST",
+      "url": "http://localhost:3000/api/auth/login",
+      "body": {
+        "type": "json",
+        "raw": "{\"email\": \"buyer1@gmail.com\", \"password\": \"123456\"}"
+      }
+    },
+    {
+      "name": "Get All Foodbags (GET)",
+      "method": "GET",
+      "url": "http://localhost:3000/api/foodbags"
+    },
+    {
+      "name": "Create Foodbag (Seller)",
+      "method": "POST",
+      "url": "http://localhost:3000/api/foodbags",
+      "headers": {
+        "Authorization": "Bearer {{seller_token}}",
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "type": "json",
+        "raw": "{\"title\":\"Túi đồ ăn chiều\", \"price\":30000, \"items\":[{\"name\":\"Cơm\",\"quantity\":1}], \"pickupLocation\":{\"address\":\"Quận 1\",\"lat\":10.77,\"lng\":106.69}}"
+      }
+    },
+    {
+      "name": "Get Foodbag by ID",
+      "method": "GET",
+      "url": "http://localhost:3000/api/foodbags/{{foodbag_id}}"
+    },
+    {
+      "name": "Create Order (Buyer)",
+      "method": "POST",
+      "url": "http://localhost:3000/api/orders",
+      "headers": {
+        "Authorization": "Bearer {{buyer_token}}",
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "type": "json",
+        "raw": "{\"foodBagId\":\"{{foodbag_id}}\", \"quantity\":1, \"buyerLat\":10.78, \"buyerLng\":106.70}"
+      }
+    },
+    {
+      "name": "Get Order (buyer or seller)",
+      "method": "GET",
+      "url": "http://localhost:3000/api/orders/{{order_id}}",
+      "headers": {
+        "Authorization": "Bearer {{buyer_token}}"
+      }
+    },
+    {
+      "name": "Update Order Status — Seller",
+      "method": "PUT",
+      "url": "http://localhost:3000/api/orders/{{order_id}}/status",
+      "headers": {
+        "Authorization": "Bearer {{seller_token}}",
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "type": "json",
+        "raw": "{\"status\":\"confirmed\"}"
+      }
+    },
+    {
+      "name": "Seller Orders",
+      "method": "GET",
+      "url": "http://localhost:3000/api/seller/orders",
+      "headers": {
+        "Authorization": "Bearer {{seller_token}}"
+      }
+    },
+    {
+      "name": "Seller Stats",
+      "method": "GET",
+      "url": "http://localhost:3000/api/seller/stats",
+      "headers": {
+        "Authorization": "Bearer {{seller_token}}"
+      }
+    }
+  ],
+  "env": {
+    "seller_token": "",
+    "buyer_token": "",
+    "foodbag_id": "",
+    "order_id": ""
+  }
+}
