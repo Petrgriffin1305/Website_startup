@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TGTG Website Header</title>
+    <!-- Nhúng FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- Reset & Font --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+        }
+
+        /* --- Header Container --- */
+        .web-header {
+            background-color: #ffffff;
+            height: 70px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px; /* Khoảng cách 2 bên lề */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: fixed; /* Dính trên cùng */
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* --- 1. Logo (Bên trái) --- */
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e1ae16; /* Màu thương hiệu */
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* --- 2. Search Bar (Ở giữa - Đặc trưng web app) --- */
+        .search-container {
+            flex: 1;
+            max-width: 400px;
+            margin: 0 20px;
+            position: relative;
+        }
+        
+        .search-container input {
+            width: 100%;
+            padding: 10px 15px 10px 40px;
+            border-radius: 20px;
+            border: 1px solid #e0e0e0;
+            background-color: #f0f2f5;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .search-container input:focus {
+            background-color: #fff;
+            border-color: #d18a17;
+            box-shadow: 0 0 0 3px rgba(13, 92, 88, 0.1);
+        }
+
+        .search-container i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+
+        /* --- 3. Navigation Menu (Bên phải) --- */
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px; /* Khoảng cách giữa các mục */
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #555;
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px; /* Khoảng cách giữa icon và chữ */
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.2s;
+            position: relative; /* Để định vị chấm đỏ */
+        }
+
+        .nav-link i {
+            font-size: 18px;
+        }
+
+        /* Hiệu ứng Hover cho Desktop */
+        .nav-link:hover {
+            background-color: #f0f7f6; /* Màu nền xanh rất nhạt khi di chuột */
+            color: #0d5c58;
+        }
+
+        /* Trạng thái Active */
+        .nav-link.active {
+            color: #edaf13;
+            background-color: #e6f2f1;
+        }
+
+        /* --- Notification Dot (Chấm thông báo) --- */
+        .badge-dot {
+            position: absolute;
+            top: 5px;
+            left: 22px; /* Căn chỉnh vị trí so với icon */
+            width: 8px;
+            height: 8px;
+            background-color: hsl(25, 75%, 51%);
+            border-radius: 50%;
+            border: 2px solid #fff;
+        }
+
+        /* --- Responsive (Ẩn chữ khi màn hình nhỏ) --- */
+        @media (max-width: 900px) {
+            .nav-link span {
+                display: none; /* Ẩn chữ */
+            }
+            .web-header {
+                padding: 0 20px;
+            }
+            .badge-dot {
+                left: 20px; /* Chỉnh lại vị trí chấm khi mất chữ */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="web-header">
+
+        <!-- 2. Search Bar (Thay thế cho nút 'Browse' trên mobile) -->
+        <div class="search-container">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Tìm kiếm cửa hàng, đồ ăn...">
+        </div>
+
+        <!-- 3. Menu Navigation -->
+        <nav class="nav-menu">
+            <!-- Discover -->
+            <a href="#" class="nav-link active">
+                <i class="fa-solid fa-compass"></i>
+                <span>Khám phá</span>
+            </a>
+
+            <!-- Delivery (Có chấm thông báo) -->
+            <a href="#" class="nav-link">
+                <i class="fa-solid fa-receipt"></i>
+                <span class="badge-dot"></span>
+                <span>Đơn hàng</span>
+            </a>
+
+            <!-- Favourites -->
+            <a href="#" class="nav-link">
+                <i class="fa-regular fa-heart"></i>
+                <span>Yêu thích</span>
+            </a>
+
+            <!-- Profile -->
+            <a href="#" class="nav-link">
+                <i class="fa-regular fa-user-circle"></i>
+                <span>Tài khoản</span>
+            </a>
+        </nav>
+    </header>
+
+    <!-- Nội dung giả lập để test cuộn trang -->
+    <div style="margin-top: 100px; text-align: center; padding: 20px;">
+        <h2>Không phải ShopeeFood</h2>
+        <p>Start-up Food App</p>
+    </div>
+
+</body>
+</html>

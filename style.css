@@ -1,0 +1,162 @@
+/* Reset cơ bản */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Thay link ảnh của bạn vào đây */
+    background-image: url('login-hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* --- TẠO KHUNG KÍNH MỜ TỐI --- */
+.login-box {
+    width: 400px;
+    padding: 40px;
+    /* Nền màu đen trong suốt 70% - Giúp chữ trắng nổi bần bật */
+    background: rgba(0, 0, 0, 0.7); 
+    /* Hiệu ứng làm mờ ảnh núi phía sau khung */
+    backdrop-filter: blur(8px); 
+    box-shadow: 0 15px 25px rgba(0,0,0,0.6);
+    border-radius: 10px;
+    /* Viền mỏng nhẹ để tạo cảm giác 3D */
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+}
+
+.container h2 {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+    /* SỬA DÒNG NÀY */
+    color: #c96456; /* Mã màu cam đỏ lấy từ đỉnh núi */
+}
+
+/* --- STYLE CHO Ô INPUT --- */
+.user-box {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.user-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff; /* Chữ khi gõ vào màu trắng */
+    margin-bottom: 10px;
+    border: none;
+    border-bottom: 1px solid #fff; /* Chỉ kẻ gạch chân màu trắng */
+    background: transparent; /* Nền trong suốt */
+    outline: none;
+}
+
+.user-box label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #ccc; /* Màu chữ gợi ý xám nhạt */
+    pointer-events: none;
+    transition: .5s;
+}
+
+/* Hiệu ứng khi nhập liệu: Label bay lên trên */
+.user-box input:focus ~ label,
+.user-box input:valid ~ label {
+    top: -20px;
+    left: 0;
+    color: #c96456; /* Đổi màu cam khi nhập */
+    font-size: 12px;
+}
+
+/* --- CÁC TÙY CHỌN KHÁC --- */
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.options a {
+    color: #c96456; /* Link màu cam đỏ */
+    text-decoration: none;
+}
+
+.button-group p {
+    color: #fff;
+    text-align: center;
+    margin: 15px 0 10px;
+    font-size: 14px;
+}
+
+/* --- NÚT BẤM --- */
+button {
+    width: 100%;
+    padding: 10px 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Nút Đăng nhập - Màu cam đỏ nổi bật */
+.btn-submit {
+    background: #c96456; 
+    color: #fff;
+    box-shadow: 0 0 10px #c96456;
+    transition: 0.3s;
+}
+
+.btn-submit:hover {
+    background: #e07a5f;
+    box-shadow: 0 0 20px #c96456, 0 0 40px #c96456;
+}
+
+/* Nút Đăng ký - Màu trong suốt viền trắng */
+.btn-register {
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.btn-register:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* 1. Đổi màu chung cho tất cả icon trong ô nhập (User, Lock) */
+.input-box i {
+    /* Chuyển sang màu Trắng cho nổi trên nền tối */
+    color: #ffffff; 
+    
+    /* Tăng kích thước nếu thấy bé quá */
+    font-size: 20px; 
+}
+
+/* 2. Riêng icon con mắt (Ẩn/Hiện pass) */
+.input-box .eye i {
+    color: #ffffff; /* Màu trắng */
+    cursor: pointer; /* Khi trỏ chuột vào sẽ hiện bàn tay */
+    transition: 0.3s; /* Hiệu ứng chuyển màu mượt */
+}
+
+/* 3. Hiệu ứng: Khi rê chuột vào con mắt thì đổi màu Cam đỏ */
+.input-box .eye:hover i {
+    color: #c96456; 
+}

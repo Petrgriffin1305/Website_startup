@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng nhập</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Font Poppins cho đẹp -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Đăng nhập</h2>
+
+        <!-- Input User -->
+        <div class="input-box">
+            <input type="text" id="loginUser" placeholder="Tên người dùng" required>
+            <i class='bx bx-user'></i>
+        </div>
+
+        <!-- Input Password -->
+        <div class="input-box">
+            <input type="password" id="loginPass" placeholder="Mật khẩu" required>
+            <i class='bx bx-lock-alt'></i> <!-- Icon ổ khóa -->
+            
+            <span class="eye" onclick="togglePassword()">
+               <i class='bx bx-hide' id="eye-icon"></i>
+            </span>
+        </div>
+
+        <!-- Hàng chứa: Nhớ MK và Quên MK -->
+        <div class="options">
+            <div class="remember">
+                <input type="checkbox" id="rememberMe"> 
+                <label for="rememberMe">Nhớ mật khẩu</label>
+            </div>
+            <button class="forgot-btn">Quên mật khẩu?</button>
+        </div>
+
+        <button class="btn-login" onclick="login()">Đăng nhập</button>
+
+        <div class="signup-link">
+            <h4>Chưa có tài khoản? <button onclick="goToSignup()">Đăng ký ngay</button></h4>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
