@@ -3,188 +3,357 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TGTG Website Header</title>
-    <!-- Nhúng FontAwesome -->
+    <title>TPHCM Food Rescue</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- Reset & Font --- */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* --- 1. GLOBAL STYLES --- */
+        :root {
+            --primary: #ff5722;
+            --primary-light: #fff3e0;
+            --accent: #e64a19;
+            --warning: #d32f2f;
+            --success: #388e3c;
+            --bg: #f5f5f5;
+            --text: #333;
+            --gray: #757575;
+            --white: #ffffff;
         }
 
-        body {
-            background-color: #f9f9f9;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: var(--bg); color: var(--text); padding-top: 80px; }
 
-        /* --- Header Container --- */
+        /* --- 2. HEADER --- */
         .web-header {
-            background-color: #ffffff;
-            height: 70px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 40px; /* Khoảng cách 2 bên lề */
+            background-color: var(--white); height: 70px; width: 100%; display: flex; align-items: center;
+            justify-content: space-between; padding: 0 40px; 
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: fixed; /* Dính trên cùng */
-            top: 0;
-            z-index: 1000;
-        }
-
-        /* --- 1. Logo (Bên trái) --- */
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #e1ae16; /* Màu thương hiệu */
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* --- 2. Search Bar (Ở giữa - Đặc trưng web app) --- */
-        .search-container {
-            flex: 1;
-            max-width: 400px;
-            margin: 0 20px;
-            position: relative;
+            position: fixed; top: 0; z-index: 1000;
         }
         
-        .search-container input {
-            width: 100%;
-            padding: 10px 15px 10px 40px;
-            border-radius: 20px;
-            border: 1px solid #e0e0e0;
-            background-color: #f0f2f5;
-            outline: none;
-            transition: 0.2s;
+        .logo { 
+            font-size: 24px; font-weight: 800; color: var(--primary); 
+            text-decoration: none; display: flex; gap: 10px; align-items: center;
+            text-transform: uppercase; letter-spacing: 1px;
         }
 
-        .search-container input:focus {
-            background-color: #fff;
-            border-color: #d18a17;
-            box-shadow: 0 0 0 3px rgba(13, 92, 88, 0.1);
-        }
-
-        .search-container i {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #999;
-        }
-
-        /* --- 3. Navigation Menu (Bên phải) --- */
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 30px; /* Khoảng cách giữa các mục */
-        }
-
+        .nav-menu { display: flex; gap: 30px; }
         .nav-link {
-            text-decoration: none;
-            color: #555;
-            font-weight: 600;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px; /* Khoảng cách giữa icon và chữ */
-            padding: 8px 12px;
-            border-radius: 8px;
-            transition: all 0.2s;
-            position: relative; /* Để định vị chấm đỏ */
+            text-decoration: none; color: var(--gray); font-weight: 600; font-size: 14px;
+            display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 8px; 
+            cursor: pointer; transition: 0.2s;
         }
+        .nav-link:hover { background-color: var(--primary-light); color: var(--primary); }
+        .nav-link.active { color: var(--primary); background-color: var(--primary-light); }
 
-        .nav-link i {
-            font-size: 18px;
-        }
-
-        /* Hiệu ứng Hover cho Desktop */
-        .nav-link:hover {
-            background-color: #f0f7f6; /* Màu nền xanh rất nhạt khi di chuột */
-            color: #0d5c58;
-        }
-
-        /* Trạng thái Active */
-        .nav-link.active {
-            color: #edaf13;
-            background-color: #e6f2f1;
-        }
-
-        /* --- Notification Dot (Chấm thông báo) --- */
         .badge-dot {
-            position: absolute;
-            top: 5px;
-            left: 22px; /* Căn chỉnh vị trí so với icon */
-            width: 8px;
-            height: 8px;
-            background-color: hsl(25, 75%, 51%);
-            border-radius: 50%;
-            border: 2px solid #fff;
+            width: 8px; height: 8px; background-color: var(--warning);
+            border-radius: 50%; display: inline-block; margin-left: -5px; margin-top: -10px;
+        }
+        
+        /* --- 3. LAYOUT & CARDS --- */
+        .main-container { max-width: 1000px; margin: 0 auto; padding: 20px; min-height: 80vh; }
+
+        .grid-layout {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;
         }
 
-        /* --- Responsive (Ẩn chữ khi màn hình nhỏ) --- */
-        @media (max-width: 900px) {
-            .nav-link span {
-                display: none; /* Ẩn chữ */
-            }
-            .web-header {
-                padding: 0 20px;
-            }
-            .badge-dot {
-                left: 20px; /* Chỉnh lại vị trí chấm khi mất chữ */
-            }
+        .store-card {
+            background: var(--white); border-radius: 12px; overflow: hidden; border: 1px solid #eee;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02); transition: transform 0.2s; cursor: pointer;
+        }
+        .store-card:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-color: var(--primary-light); }
+        
+        .card-img { height: 160px; background-color: #eee; position: relative; }
+        .card-img img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .discount-tag {
+            position: absolute; top: 10px; right: 10px;
+            background: var(--warning); color: #fff; padding: 4px 8px;
+            font-size: 12px; font-weight: bold; border-radius: 4px;
+        }
+
+        .card-body { padding: 15px; }
+        .store-name { font-weight: bold; font-size: 16px; margin-bottom: 5px; color: #222; }
+        .pickup-time { font-size: 13px; color: var(--gray); margin-bottom: 10px; display:flex; align-items:center; gap:5px;}
+        
+        .price-row { display: flex; justify-content: space-between; align-items: flex-end; }
+        .price { font-weight: 800; color: var(--primary); font-size: 18px; }
+        .original-price { text-decoration: line-through; color: #999; font-size: 13px; margin-left: 5px; }
+
+        /* --- 4. CÁC COMPONENT KHÁC --- */
+        .promo-banner {
+            background: linear-gradient(135deg, #ff9a9e 0%, #ff5722 100%);
+            color: white; padding: 30px; border-radius: 16px; margin-bottom: 30px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+
+        .order-item {
+            background: var(--white); padding: 20px; border-radius: 10px; margin-bottom: 15px;
+            display: flex; align-items: center; justify-content: space-between; border: 1px solid #eee;
+        }
+        .status-badge { padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+        .status-success { background: #e8f5e9; color: var(--success); }
+        .status-cancel { background: #ffebee; color: var(--warning); }
+
+        .profile-header { background: var(--white); padding: 30px; border-radius: 12px; text-align: center; margin-bottom: 20px; border: 1px solid #eee;}
+        .avatar-circle {
+            width: 80px; height: 80px; background: var(--primary-light); color: var(--primary);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 30px; margin: 0 auto 10px; border: 2px solid var(--primary);
+        }
+        .stats-container { display: flex; gap: 20px; justify-content: center; margin-top: 20px; }
+        .stat-box {
+            background: #fff8e1; color: #f57f17; padding: 15px; border-radius: 10px; width: 140px; border: 1px solid #ffecb3;
+        }
+
+        .section-title { font-size: 20px; font-weight: 700; margin-bottom: 20px; color: var(--text); position: relative; display: inline-block;}
+        .section-title::after {
+            content: ''; display: block; width: 40px; height: 3px; background: var(--primary); margin-top: 5px; border-radius: 2px;
         }
     </style>
 </head>
 <body>
 
+    <!-- HEADER -->
     <header class="web-header">
+        <a href="#" class="logo">
+            <i class="fa-solid fa-utensils"></i> TPHCM Food Rescue
+        </a>
 
-        <!-- 2. Search Bar (Thay thế cho nút 'Browse' trên mobile) -->
-        <div class="search-container">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="Tìm kiếm cửa hàng, đồ ăn...">
-        </div>
-
-        <!-- 3. Menu Navigation -->
+        <!-- Menu Navigation -->
         <nav class="nav-menu">
-            <!-- Discover -->
-            <a href="#" class="nav-link active">
-                <i class="fa-solid fa-compass"></i>
-                <span>Khám phá</span>
-            </a>
-
-            <!-- Delivery (Có chấm thông báo) -->
-            <a href="#" class="nav-link">
-                <i class="fa-solid fa-receipt"></i>
+            <div class="nav-link active" onclick="loadPage('home', this)">
+                <i class="fa-solid fa-house"></i> <span>Trang chủ</span>
+            </div>
+            <div class="nav-link" onclick="loadPage('search', this)">
+                <i class="fa-solid fa-search"></i> <span>Tìm kiếm</span>
+            </div>
+            <div class="nav-link" onclick="loadPage('orders', this)">
+                <i class="fa-solid fa-file-invoice"></i>
                 <span class="badge-dot"></span>
                 <span>Đơn hàng</span>
-            </a>
-
-            <!-- Favourites -->
-            <a href="#" class="nav-link">
-                <i class="fa-regular fa-heart"></i>
-                <span>Yêu thích</span>
-            </a>
-
-            <!-- Profile -->
-            <a href="#" class="nav-link">
-                <i class="fa-regular fa-user-circle"></i>
-                <span>Tài khoản</span>
-            </a>
+            </div>
+            <div class="nav-link" onclick="loadPage('saved', this)">
+                <i class="fa-solid fa-bookmark"></i> <span>Đã lưu</span>
+            </div>
+            <div class="nav-link" onclick="loadPage('profile', this)">
+                <i class="fa-solid fa-user"></i> <span>Tài khoản</span>
+            </div>
         </nav>
     </header>
 
-    <!-- Nội dung giả lập để test cuộn trang -->
-    <div style="margin-top: 100px; text-align: center; padding: 20px;">
-        <h2>Không phải ShopeeFood</h2>
-        <p>Start-up Food App</p>
-    </div>
+    <!-- MAIN CONTENT -->
+    <main id="main-content" class="main-container">
+        <!-- Javascript sẽ điền nội dung vào đây -->
+    </main>
 
+    <!-- JAVASCRIPT -->
+    <script>
+        // --- 1. CÁC HÀM XỬ LÝ ĐĂNG NHẬP (Global Scope) ---
+        
+        // Hàm kiểm tra đăng nhập (được gọi khi tải trang)
+        function checkLoginStatus() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            
+            if (!isLoggedIn || isLoggedIn !== 'true') {
+                alert("Bạn cần đăng nhập để tiếp tục!");
+                window.location.href = 'dangnhap.html';
+            }
+        }
+
+        // Hàm Đăng xuất (được gọi từ nút bấm)
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('currentUser');
+            alert("Đã đăng xuất!");
+            window.location.href = 'dangnhap.html';
+        }
+
+        // --- 2. DỮ LIỆU & GIAO DIỆN ---
+        
+        const products = [
+            { name: "Combo Cơm Gà Xối Mỡ", shop: "Cơm Gà 123", img: "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b", dist: "1.2km", price: "25.000đ", old: "50.000đ", discount: "-50%" },
+            { name: "Bánh Mì Chảo Đầy Đủ", shop: "Bánh Mì Cô Ba", img: "https://images.unsplash.com/photo-1555126634-323283e090fa", dist: "0.5km", price: "15.000đ", old: "35.000đ", discount: "-57%" },
+            { name: "Trà Sữa Size L (Random)", shop: "Tea House", img: "https://images.unsplash.com/photo-1558160074-4d7d8bdf4256", dist: "2.0km", price: "20.000đ", old: "55.000đ", discount: "-63%" },
+            { name: "Hộp Bánh Ngọt Tổng Hợp", shop: "Sweet Bakery", img: "https://images.unsplash.com/photo-1509440159596-0249088772ff", dist: "1.5km", price: "30.000đ", old: "90.000đ", discount: "-66%" },
+            { name: "Suất Sushi Thanh Lý", shop: "Tokyo Deli", img: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c", dist: "3.2km", price: "45.000đ", old: "120.000đ", discount: "-62%" }
+        ];
+
+        function createProductCard(p) {
+            return `
+            <div class="store-card">
+                <div class="card-img">
+                    <img src="${p.img}" alt="${p.name}">
+                    <div class="discount-tag">${p.discount}</div>
+                </div>
+                <div class="card-body">
+                    <div class="store-name">${p.name}</div>
+                    <div class="pickup-time">
+                        <i class="fa-solid fa-shop" style="font-size:11px;"></i> ${p.shop} • ${p.dist}
+                    </div>
+                    <div class="price-row">
+                        <div class="price">${p.price}</div>
+                        <div class="original-price">${p.old}</div>
+                        <i class="fa-solid fa-circle-plus" style="color:var(--primary); font-size:24px; margin-left:auto; cursor:pointer;"></i>
+                    </div>
+                </div>
+            </div>`;
+        }
+
+        const pages = {
+            home: `
+                <div class="promo-banner">
+                    <div>
+                        <h1 style="font-size:28px; margin-bottom:10px;">Săn deal giờ chót! ⏰</h1>
+                        <p style="opacity:0.9;">Giảm đến 70% các suất ăn cuối ngày. Vừa rẻ vừa ngon.</p>
+                        <button style="margin-top:15px; padding:10px 20px; background:white; color:var(--primary); border:none; border-radius:20px; font-weight:bold; cursor:pointer;">Xem ngay</button>
+                    </div>
+                    <i class="fa-solid fa-burger" style="font-size:80px; opacity:0.8;"></i>
+                </div>
+
+                <h2 class="section-title">Gợi ý cho bạn</h2>
+                <div class="grid-layout">
+                    ${products.map(p => createProductCard(p)).join('')}
+                </div>
+            `,
+
+            search: `
+                <h2 class="section-title">Tìm kiếm món ăn</h2>
+                <div style="display:flex; gap:10px; margin-bottom:20px;">
+                    <input type="text" placeholder="Bạn thèm món gì?" style="flex:1; padding:12px; border:1px solid #ccc; border-radius:8px; outline:none;">
+                    <button style="padding:0 20px; background:var(--primary); color:white; border:none; border-radius:8px; cursor:pointer;"><i class="fa-solid fa-search"></i></button>
+                </div>
+                
+                <div style="margin-bottom:20px; display:flex; gap:10px; flex-wrap:wrap;">
+                    <span style="padding:6px 15px; background:#eee; border-radius:20px; font-size:13px; cursor:pointer;">Cơm tấm</span>
+                    <span style="padding:6px 15px; background:#eee; border-radius:20px; font-size:13px; cursor:pointer;">Trà sữa</span>
+                    <span style="padding:6px 15px; background:var(--primary-light); color:var(--primary); border:1px solid var(--primary); border-radius:20px; font-size:13px; font-weight:bold; cursor:pointer;">🔥 Giá sốc</span>
+                </div>
+
+                <div class="grid-layout">
+                    ${products.slice(0,3).map(p => createProductCard(p)).join('')}
+                </div>
+            `,
+
+            orders: `
+                <h2 class="section-title">Lịch sử đơn hàng</h2>
+                <div>
+                    <div class="order-item">
+                        <div style="display:flex; gap:15px; align-items:center;">
+                            <div style="width:50px; height:50px; background:var(--primary-light); color:var(--primary); display:flex; align-items:center; justify-content:center; border-radius:8px;">
+                                <i class="fa-solid fa-utensils"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight:bold;">Cơm Gà 123</div>
+                                <div style="font-size:12px; color:#777;">Hôm qua - 19:30</div>
+                            </div>
+                        </div>
+                        <div style="text-align:right;">
+                            <div style="font-weight:bold;">25.000đ</div>
+                            <span class="status-badge status-success">Hoàn thành</span>
+                        </div>
+                    </div>
+
+                    <div class="order-item">
+                         <div style="display:flex; gap:15px; align-items:center;">
+                            <div style="width:50px; height:50px; background:#eee; color:#777; display:flex; align-items:center; justify-content:center; border-radius:8px;">
+                                <i class="fa-solid fa-ban"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight:bold;">Bánh Mì Cô Ba</div>
+                                <div style="font-size:12px; color:#777;">20/10/2023</div>
+                            </div>
+                        </div>
+                        <div style="text-align:right;">
+                            <div style="font-weight:bold;">15.000đ</div>
+                            <span class="status-badge status-cancel">Đã hủy</span>
+                        </div>
+                    </div>
+                </div>
+            `,
+
+            saved: `
+                <h2 class="section-title">Quán yêu thích</h2>
+                <p style="color:#777; margin-bottom:15px;">Danh sách các quán bạn thường xuyên đặt.</p>
+                <div class="grid-layout">
+                    ${products.slice(2,5).map(p => createProductCard(p)).join('')}
+                </div>
+            `,
+
+            profile: `
+                <div class="profile-header">
+                    <div class="avatar-circle">
+                        <i class="fa-solid fa-user-astronaut"></i>
+                    </div>
+                    <!-- Đã thêm ID để Javascript tìm và sửa tên -->
+                    <h2 id="user-display-name">Người dùng</h2>
+                    <p style="color:var(--gray)">Thành viên Vàng ⭐️</p>
+
+                    <div class="stats-container">
+                        <div class="stat-box">
+                            <span style="font-size:24px; font-weight:bold; display:block;">15</span>
+                            <span style="font-size:12px;">Đơn thành công</span>
+                        </div>
+                        <div class="stat-box" style="background:var(--primary-light); color:var(--primary); border-color:var(--primary);">
+                            <span style="font-size:24px; font-weight:bold; display:block;">450k</span>
+                            <span style="font-size:12px;">Đã tiết kiệm</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background:var(--white); border-radius:12px; border:1px solid #eee;">
+                    <div style="padding:15px; border-bottom:1px solid #eee; display:flex; justify-content:space-between; cursor:pointer;">
+                        <span><i class="fa-solid fa-wallet" style="margin-right:10px; color:var(--gray)"></i> Ví TPHCM Food Rescue</span>
+                        <span style="color:var(--primary); font-weight:bold;">0đ</span>
+                    </div>
+                    <div style="padding:15px; border-bottom:1px solid #eee; display:flex; justify-content:space-between; cursor:pointer;">
+                        <span><i class="fa-solid fa-location-dot" style="margin-right:10px; color:var(--gray)"></i> Địa chỉ đã lưu</span>
+                        <i class="fa-solid fa-chevron-right" style="color:#ccc"></i>
+                    </div>
+                    <div style="padding:15px; display:flex; justify-content:space-between; cursor:pointer;">
+                        <span><i class="fa-solid fa-headset" style="margin-right:10px; color:var(--gray)"></i> Trung tâm hỗ trợ</span>
+                        <i class="fa-solid fa-chevron-right" style="color:#ccc"></i>
+                    </div>
+                </div>
+                
+                <!-- Đã gắn hàm logout() vào nút Đăng xuất -->
+                <button onclick="logout()" style="width:100%; padding:15px; margin-top:20px; background:#eee; border:none; border-radius:8px; font-weight:bold; cursor:pointer; color:#555;">Đăng xuất</button>
+            `
+        };
+
+        // Hàm chuyển trang chính
+        function loadPage(pageName, element) {
+            // 1. Render HTML
+            document.getElementById('main-content').innerHTML = pages[pageName];
+            
+            // 2. Update style menu Active
+            if (element) {
+                document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+                element.classList.add('active');
+            }
+
+            // 3. Xử lý riêng cho trang Profile: Cập nhật tên người dùng
+            if (pageName === 'profile') {
+                const currentUser = localStorage.getItem('currentUser') || 'Bạn';
+                const nameElement = document.getElementById('user-display-name');
+                if (nameElement) {
+                    nameElement.innerText = currentUser;
+                }
+            }
+
+            // 4. Scroll lên đầu trang
+            window.scrollTo(0, 0);
+        }
+
+        // --- 3. KHỞI TẠO (WINDOW ONLOAD) ---
+        window.onload = function() {
+            // Kiểm tra đăng nhập ngay khi mở web
+            checkLoginStatus(); 
+
+            // Mặc định load trang Home
+            loadPage('home', document.querySelector('.nav-link')); 
+        };
+    </script>
 </body>
 </html>

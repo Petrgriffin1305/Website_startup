@@ -2,13 +2,13 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Tạo tài khoản</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Đăng ký - FoodSaver</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link CSS mới -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
     <div class="container">
-        <h2>Đăng kí</h2>
+        <h2>Đăng ký</h2>
 
         <div class="input-box">
             <i class='bx bx-user'></i>
@@ -17,30 +17,25 @@
 
         <div class="input-box">
             <i class='bx bx-lock'></i>
-
+            <input type="password" id="signupPass" placeholder="Mật khẩu">
             <span class="eye" onclick="togglePassword('signupPass', this)">
                 <i class='bx bx-hide'></i>
             </span>
-
-            <input type="password" id="signupPass" placeholder="Mật khẩu">
         </div>
 
         <div class="input-box">
             <i class='bx bx-lock'></i>
-
+            <input type="password" id="confirmPass" placeholder="Nhập lại mật khẩu">
             <span class="eye" onclick="togglePassword('confirmPass', this)">
                 <i class='bx bx-hide'></i>
             </span>
-
-            <input type="password" id="confirmPass" placeholder="Nhập lại mật khẩu">
         </div>
 
         <button onclick="signup()">Tạo tài khoản</button>
 
-        <h4>Đã có tài khoản?</h4>
-        <button onclick="goToLogin()">Đăng nhập</button>
+        <h4>Đã có tài khoản? <button onclick="goToLogin()">Đăng nhập</button></h4>
     </div>
 
-    <script src="script.js"></script>
+    <script src="auth.js"></script> <!-- Link JS logic -->
 </body>
 </html>
